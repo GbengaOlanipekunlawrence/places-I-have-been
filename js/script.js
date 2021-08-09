@@ -1,12 +1,12 @@
 // Business Logic for Visited Places ---------
-function VisitedPlaces() {
-    this.VisitedPlaces = {};
+function VisitedPlace() {
+    this.places = {};
     this.currentId = 0;
 }
 
-VisitedPlace.prototype.addPlace = function (VisitedPlace) {
+VisitedPlace.prototype.addPlace = function (place) {
     place.id = this.assignId();
-    this.places[contact.id] = place;
+    this.places[place.id] = place;
 };
 
 VisitedPlace.prototype.assignId = function () {
@@ -50,22 +50,22 @@ function displayPlaceDetails(visitedPlaceToDisplay) {
     let htmlForPlaceInfo = "";
     Object.keys(visitedPlaceToDisplay.places).forEach(function (key) {
         const place = visitedPlaceToDisplay.findPlace(key);
-        htmlForPlaceInfo += "<li id=" + place.id + ">" + place.location + " " + place.location + "</li>";
+        htmlForPlaceInfo += "<li id=" + place.id + ">" + place.location + " " + place.landmark + "</li>";
     });
     placesList.html(htmlForPlaceInfo);
 }
 function showPlace(placeId) {
     const place = visitedPlace.findPlace(placeId);
     $("#show-place").show();
-    $(".location").html(place.location);
-    $(".landmark").html(place.landmark);
-    $(".timeOfYear").html(place.timeOfYear);
-    $(".notes").html(place.notes);
+    $(".the-location").html(place.location);
+    $(".the-landmark").html(place.landmark);
+    $(".the-time-year").html(place.timeOfYear);
+    $(".the-notes").html(place.notes);
     let buttons = $("#buttons");
     buttons.empty();
-    // buttons.append("<button class='deleteButton' id=" + + contact.id + 
-    ">Delete</button>");
-    buttons.append("<button class='deleteButton' id='+ contact.id +'>Done</button>");
+
+
+    buttons.append("<button class='deleteButton' id='+ place.id +'>Done</button>");
 
 }
 
@@ -100,6 +100,7 @@ $(document).ready(function () {
         displayPlaceDetails(visitedPlace);
     });
 });
+
 
 
 
